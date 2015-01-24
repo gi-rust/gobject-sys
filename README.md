@@ -1,7 +1,7 @@
 Low-level Rust import crate for GObject.
 
 Currently the primary purpose of this library is to support
-[Grust](https://github.com/mzabaluev/grust). Eventually the
+[Grust](https://github.com/gi-rust/grust). Eventually the
 code for the library should be generated from
 [GObject introspection](https://wiki.gnome.org/Projects/GObjectIntrospection)
 data using Grust binding generator.
