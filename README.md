@@ -1,7 +1,12 @@
-Grust is an implementation of
-[GObject introspection](http://live.gnome.org/GObjectIntrospection)
-bindings for the [Rust](http://www.rust-lang.org/) programming language.
+Low-level Rust import crate for GObject.
 
-The goal of this project is to provide a Rust binding generator that creates
-safe Rust bindings from GIR files, as well as generated binding crates
-for the core GLib, GObject and GIO APIs.
+Currently the primary purpose of this library is to support
+[Grust](https://github.com/mzabaluev/grust). Eventually the
+code for the library should be generated from
+[GObject introspection](https://wiki.gnome.org/Projects/GObjectIntrospection)
+data using Grust binding generator.
+
+Meanwhile, the function declarations are added as needed for the development
+of the Grust core library. If you'd like to reuse this crate outside of
+Grust, feel free to add other functions and submit your changes in pull
+requests.
