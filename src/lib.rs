@@ -27,7 +27,16 @@ use glib::types::{gsize, guchar, guint, gulong};
 pub type GType = gsize;
 
 #[repr(C)]
-pub struct GTypeInstance;
+pub struct GTypeInstance {
+    g_class: gpointer
+}
+
+#[repr(C)]
+pub struct GObject {
+    g_type_instance: GTypeInstance,
+    ref_count: guint,
+    data: gpointer
+}
 
 #[repr(C)]
 pub struct GValue {
@@ -38,6 +47,7 @@ pub struct GValue {
 }
 
 extern {
+    pub fn g_object_get_type() -> GType;
     pub fn g_object_ref(obj: gpointer) -> gpointer;
     pub fn g_object_unref(obj: gpointer);
     pub fn g_type_check_instance_is_a(instance: *const GTypeInstance, iface_type: GType) -> gboolean;
