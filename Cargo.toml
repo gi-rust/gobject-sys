@@ -2,7 +2,7 @@
 
 name = "gobject-2_0-sys"
 version = "0.0.2"
-authors = ["Mikhail Zabaluev <mikhail.zabaluev@gmail.com"]
+authors = ["Mikhail Zabaluev <mikhail.zabaluev@gmail.com>"]
 description = "Import crate for GObject"
 license = "LGPL-2.1+"
 readme = "README.md"
