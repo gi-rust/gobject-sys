@@ -21,8 +21,9 @@
 
 extern crate "glib-2_0-sys" as glib;
 
-use glib::types::{gboolean, gchar, gdouble, gfloat, gint, glong, gpointer};
+use glib::types::{gboolean, gchar, gdouble, gfloat, gint, glong};
 use glib::types::{gsize, guchar, guint, gulong};
+use glib::types::{gpointer, gconstpointer};
 
 pub type GType = gsize;
 
@@ -46,14 +47,20 @@ pub struct GValue {
     data: [u64; 2]
 }
 
+pub type GBoxedCopyFunc = extern "C" fn (gpointer) -> gpointer;
+pub type GBoxedFreeFunc = extern "C" fn (gpointer);
+
 extern {
+    pub fn g_boxed_type_register_static(name: *const gchar, boxed_copy: GBoxedCopyFunc, boxed_free: GBoxedFreeFunc) -> GType;
     pub fn g_object_get_type() -> GType;
     pub fn g_object_ref(obj: gpointer) -> gpointer;
     pub fn g_object_unref(obj: gpointer);
     pub fn g_type_check_instance_is_a(instance: *const GTypeInstance, iface_type: GType) -> gboolean;
+    pub fn g_type_from_name(name: *const gchar) -> GType;
     pub fn g_type_name(t: GType) -> *const gchar;
     pub fn g_value_copy(src: *const GValue, dst: *mut GValue);
     pub fn g_value_get_boolean(value: *const GValue) -> gboolean;
+    pub fn g_value_get_boxed(value: *const GValue) -> gpointer;
     pub fn g_value_get_char(value: *const GValue) -> gchar;
     pub fn g_value_get_double(value: *const GValue) -> gdouble;
     pub fn g_value_get_float(value: *const GValue) -> gfloat;
@@ -67,6 +74,7 @@ extern {
     pub fn g_value_get_uint(value: *const GValue) -> guint;
     pub fn g_value_get_uint64(value: *const GValue) -> u64;
     pub fn g_value_get_ulong(value: *const GValue) -> gulong;
+    pub fn g_value_dup_boxed(value: *const GValue) -> gpointer;
     pub fn g_value_init(value: *mut GValue, type_id: GType) -> *mut GValue;
     pub fn g_value_set_boolean(value: *mut GValue, v_boolean: gboolean);
     pub fn g_value_set_char(value: *mut GValue, v_char: gchar);
@@ -83,6 +91,7 @@ extern {
     pub fn g_value_set_uint(value: *mut GValue, v_uint: guint);
     pub fn g_value_set_uint64(value: *mut GValue, v_uint: u64);
     pub fn g_value_set_ulong(value: *mut GValue, v_ulong: gulong);
+    pub fn g_value_take_boxed(value: *mut GValue, v_boxed: gconstpointer);
     pub fn g_value_take_string(value: *mut GValue, v_string: *mut gchar);
     pub fn g_value_unset(value: *mut GValue);
 }
