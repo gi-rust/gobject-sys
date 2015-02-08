@@ -52,6 +52,9 @@ pub type GBoxedFreeFunc = extern "C" fn (gpointer);
 
 extern {
     pub fn g_boxed_type_register_static(name: *const gchar, boxed_copy: GBoxedCopyFunc, boxed_free: GBoxedFreeFunc) -> GType;
+    pub fn g_error_get_type() -> GType;
+    pub fn g_main_context_get_type() -> GType;
+    pub fn g_main_loop_get_type() -> GType;
     pub fn g_object_get_type() -> GType;
     pub fn g_object_ref(obj: gpointer) -> gpointer;
     pub fn g_object_unref(obj: gpointer);
