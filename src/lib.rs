@@ -55,6 +55,7 @@ extern {
     pub fn g_object_get_type() -> GType;
     pub fn g_object_ref(obj: gpointer) -> gpointer;
     pub fn g_object_unref(obj: gpointer);
+    pub fn g_strdup_value_contents(value: *const GValue) -> *mut gchar;
     pub fn g_type_check_instance_is_a(instance: *const GTypeInstance, iface_type: GType) -> gboolean;
     pub fn g_type_from_name(name: *const gchar) -> GType;
     pub fn g_type_name(t: GType) -> *const gchar;
