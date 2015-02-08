@@ -76,6 +76,7 @@ extern {
     pub fn g_value_get_ulong(value: *const GValue) -> gulong;
     pub fn g_value_dup_boxed(value: *const GValue) -> gpointer;
     pub fn g_value_init(value: *mut GValue, type_id: GType) -> *mut GValue;
+    pub fn g_value_reset(value: *mut GValue) -> *mut GValue;
     pub fn g_value_set_boolean(value: *mut GValue, v_boolean: gboolean);
     pub fn g_value_set_char(value: *mut GValue, v_char: gchar);
     pub fn g_value_set_double(value: *mut GValue, v_double: gdouble);
