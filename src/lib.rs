@@ -67,6 +67,7 @@ extern {
     pub fn g_value_get_boxed(value: *const GValue) -> gpointer;
     pub fn g_value_get_char(value: *const GValue) -> gchar;
     pub fn g_value_get_double(value: *const GValue) -> gdouble;
+    pub fn g_value_get_enum(value: *const GValue) -> gint;
     pub fn g_value_get_float(value: *const GValue) -> gfloat;
     pub fn g_value_get_int(value: *const GValue) -> gint;
     pub fn g_value_get_int64(value: *const GValue) -> i64;
@@ -84,6 +85,7 @@ extern {
     pub fn g_value_set_boolean(value: *mut GValue, v_boolean: gboolean);
     pub fn g_value_set_char(value: *mut GValue, v_char: gchar);
     pub fn g_value_set_double(value: *mut GValue, v_double: gdouble);
+    pub fn g_value_set_enum(value: *mut GValue, v_enum: gint);
     pub fn g_value_set_float(value: *mut GValue, v_float: gfloat);
     pub fn g_value_set_int(value: *mut GValue, v_int: gint);
     pub fn g_value_set_int64(value: *mut GValue, v_int: i64);
