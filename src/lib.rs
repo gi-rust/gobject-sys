@@ -14,12 +14,12 @@
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-#![crate_name = "gobject-2_0-sys"]
+#![crate_name = "gobject_2_0_sys"]
 #![crate_type = "lib"]
 
 #![allow(missing_copy_implementations)]
 
-extern crate "glib-2_0-sys" as glib;
+extern crate glib_2_0_sys as glib;
 
 use glib::types::{gboolean, gchar, gdouble, gfloat, gint, glong};
 use glib::types::{gsize, guchar, guint, gulong};
