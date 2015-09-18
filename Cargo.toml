@@ -14,7 +14,8 @@ build = "build.rs"
 links = "gobject-2.0"
 
 [dependencies]
-glib-2_0-sys = "0.1"
+gtypes = "0.1"
+glib-2_0-sys = "0.2"
 
 [build-dependencies]
 pkg-config = "0.3"

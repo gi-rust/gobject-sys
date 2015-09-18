@@ -19,13 +19,10 @@
 
 #![allow(missing_copy_implementations)]
 
+extern crate gtypes;
 extern crate glib_2_0_sys as glib;
 
-use glib::types::{gboolean, gchar, gdouble, gfloat, gint, glong};
-use glib::types::{gsize, guchar, guint, gulong};
-use glib::types::{gpointer, gconstpointer};
-
-pub type GType = gsize;
+use gtypes::*;
 
 #[repr(C)]
 pub struct GTypeInstance {
