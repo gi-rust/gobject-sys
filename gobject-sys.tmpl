@@ -1,0 +1,81 @@
+<%!
+
+from grust.namematch import MatchList
+
+suppress_c_names = MatchList(
+    # Structures containing bit fields, custom-defined below
+    "GClosure",
+    "GParamSpecString",
+
+    # Unions or structures containing them, custom-defined below
+    "GTypeCValue",
+    "GWeakRef",
+    "GValue",
+
+    # Callbacks with va_list in the signature and nodes depending on them
+    "GVaClosureMarshal",
+    "GSignalCVaMarshaller",
+    "g_signal_set_va_marshaller",
+)
+
+ignore_names = ["_Value__data__union"]
+
+%>
+<%inherit file="/sys/crate.tmpl"/>
+
+<%block name="custom_types">\
+
+#[repr(C)]
+pub struct GClosure {
+    // A group of bit fields in the original definition here
+    flags: u32,
+    marshal: Option<extern "C" fn (closure: *mut GClosure,
+                                   return_value: *mut GValue,
+                                   n_param_values: guint,
+                                   param_values: *const GValue,
+                                   invocation_hint: gpointer,
+                                   marshal_data: gpointer)>,
+    pub data: gpointer,
+    notifiers: *mut GClosureNotifyData
+}
+
+#[repr(C)]
+pub struct GParamSpecString {
+    pub parent_instance: GParamSpec,
+    pub default_value: *mut gchar,
+    pub cset_first: *mut gchar,
+    pub cset_nth: *mut gchar,
+    pub substitutor: gchar,
+    // Two single-bit fields in the C definition here
+    flags: u8
+}
+
+#[repr(C)]
+pub struct GTypeCValue(i64);
+
+#[repr(C)]
+pub struct GWeakRef(gpointer);
+
+#[repr(C)]
+pub struct GValue {
+    g_type: GType,
+    data: [u64; 2]
+}
+
+</%block>
+
+<%block name="custom_extern">\
+<%
+    # libgobject provides GType functions for types defined in GLib.
+    # Piggyback on the extern crate list to get at the included
+    # GLib namespace.
+
+    glib_namespace = None
+    for crate in mapper.extern_crates():
+        if crate.namespace.name == 'GLib':
+            glib_namespace = crate.namespace
+    assert glib_namespace
+%>\
+// GType functions for GLib
+${self.gtype_functions(glib_namespace)}
+</%block>
