@@ -1,7 +1,6 @@
 [project]
-
-name = "gobject-2_0-sys"
-version = "0.2.0"
+name = "gobject-2-0-sys"
+version = "0.47.0-dev"
 authors = ["Mikhail Zabaluev <mikhail.zabaluev@gmail.com>"]
 description = "Import crate for GObject"
 license = "LGPL-2.1+"
@@ -18,7 +17,7 @@ path = "lib.rs"
 
 [dependencies]
 gtypes = "0.1"
-glib-2_0-sys = "0.2"
+glib-2-0-sys = "0.47"
 
 [build-dependencies]
 pkg-config = "0.3"
