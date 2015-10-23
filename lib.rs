@@ -42,7 +42,7 @@ pub struct GWeakRef(gpointer);
 
 #[repr(C)]
 pub struct GValue {
-    g_type: GType,
+    pub g_type: GType,
     data: [u64; 2]
 }
 
