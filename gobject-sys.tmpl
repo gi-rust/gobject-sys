@@ -23,6 +23,10 @@ ignore_names = ["_Value__data__union"]
 %>
 <%inherit file="/sys/crate.tmpl"/>
 
+<%block name="custom_crate_attributes">\
+#![allow(overflowing_literals)]  // for GParamFlags::Deprecated
+</%block>
+
 <%block name="custom_types">\
 
 #[repr(C)]
