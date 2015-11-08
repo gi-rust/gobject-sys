@@ -1,6 +1,6 @@
 [project]
 name = "gobject-2-0-sys"
-version = "0.46.3-dev"
+version = "0.46.3"
 authors = ["Mikhail Zabaluev <mikhail.zabaluev@gmail.com>"]
 description = "Import crate for GObject"
 license = "LGPL-2.1+"
