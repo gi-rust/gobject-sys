@@ -1,12 +1,9 @@
-Low-level Rust import crate for GObject.
+This project provides a Rust FFI import crate for GObject.
+Used as a dependency, it links the platform library as specified by
+pkg-config module `gobject-2.0`, and exports function declarations, data
+types and constants needed to call functions of the C library API.
 
-Currently the primary purpose of this library is to support
-[Grust](https://github.com/gi-rust/grust). Eventually the
-code for the library should be generated from
-[GObject introspection](https://wiki.gnome.org/Projects/GObjectIntrospection)
-data using Grust binding generator.
+The source code for this library is generated from [GObject introspection][gi] data using [grust-gen][gen].
 
-Meanwhile, the function declarations are added as needed for the development
-of the Grust core library. If you'd like to reuse this crate outside of
-Grust, feel free to add other functions and submit your changes in pull
-requests.
+[gi]: https://wiki.gnome.org/Projects/GObjectIntrospection
+[gen]: https://github.com/gi-rust/grust-gen
