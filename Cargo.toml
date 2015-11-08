@@ -1,4 +1,4 @@
-[project]
+[package]
 name = "gobject-2-0-sys"
 version = "0.47.0-dev"
 authors = ["Mikhail Zabaluev <mikhail.zabaluev@gmail.com>"]
