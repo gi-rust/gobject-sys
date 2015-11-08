@@ -27,8 +27,7 @@ ignore_names = ["_Value__data__union"]
 #![allow(overflowing_literals)]  // for GParamFlags::Deprecated
 </%block>
 
-<%block name="custom_types">\
-
+<%block name="custom_types">
 #[repr(C)]
 pub struct GClosure {
     // A group of bit fields in the original definition here
@@ -65,10 +64,9 @@ pub struct GValue {
     pub g_type: GType,
     data: [u64; 2]
 }
-
 </%block>
 
-<%block name="custom_extern">\
+<%block name="custom_extern">
 <%
     # libgobject provides GType functions for types defined in GLib.
     # Piggyback on the extern crate list to get at the included
@@ -81,5 +79,6 @@ pub struct GValue {
     assert glib_namespace
 %>\
 // GType functions for GLib
-${self.gtype_functions(glib_namespace)}
+${self.gtype_functions(glib_namespace.type_names.values(),
+                       glib_namespace.symbols.values())}\
 </%block>
